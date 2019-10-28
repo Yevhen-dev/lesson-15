@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HW15_Chuharkin_Yevhen</title>
+	<link media="all" rel="stylesheet" href="css/reset.css">
+	<script src="https://cdn.rawgit.com/chrisveness/crypto/4e93a4d/sha256.js"></script>
+</head>
+<body>
+
+	<div class="wrap-allUser">
+		<div class="user-info"></div>
+		<button id="showAllUser" style="margin: 10px;">Show all users</button>
+	</div>
+
+	<div class="wrap-addNewUser">
+
+		<div class="conteiner-registration" style=" display: flex; flex-flow: column wrap; justify-content: space-around; align-items: center; width: 450px; height: 430px; border: 1px solid black; margin: 5px; background-color: #fff7d1;">
+
+			<h1 style="font-size: 24px;">New User</h1>
+
+			<form id="form-newUser" style="display: flex; flex-flow: column wrap; justify-content: space-between; width: 90%; height: 350px; border: 1px solid black; padding: 10px;">
+				
+				<div class="newUser-login">
+					<label>Login <em style="color: red;">*</em></label>
+					<input type="text" id="newUserLogin">
+				</div>
+
+				<div class="newUser-name">
+					<label>Name <em style="color: red;">*</em></label>
+					<input type="text" name="user-name" id="newUserName">
+				</div>
+
+				<div class="newUser-email">
+					<label>Email <em style="color: red;">*</em></label>
+					<input type="email" name="user-email" id="newUserEmail" placeholder="example@gmail.com">
+				</div>
+
+				<div class="newUser-photo" style="display: flex; flex-flow: row nowrap; align-items: center;">
+					<img id="newUserImg-photo" src="media/images/user.svg" style="width: 128px; height: 128px;">
+					<input type="file" id="newUserPhoto">
+					<input type="hidden" id="newUserPhotoHidden" value="" name="user-photo" >
+				</div>
+
+				<sup style="color: green; font-style: italic;">Photo size must be less than 100kb</sup>
+
+				<sup style="color: red; font-style: italic;">* - required field</sup>
+
+			</form>
+
+			<button id="addNewUser">Add new User</button>
+
+		</div>
+			
+	</div>
+
+	<div class="wrap-deleteUser">
+		<select id="selectDeleteUser" style="margin: 10px;">
+			<option value="0">Select user</option>
+		</select>
+		<button id="deleteUser" style="margin: 10px;">Delete user</button>
+	</div>
+
+
+	<div class="wrap-changeUser" style="border: 1px solid black; width: 500px; margin: 20px; padding: 10px;">
+		<label>Select user which you want change</label>
+		<select id="changeUser" style="margin: 10px;">
+			<option value="0">Select user</option>
+		</select>
+
+
+			<div id="conteiner-changeUser" style="display: none;">
+				<form id="form-changeUser" style="display: flex; flex-flow: column wrap; justify-content: space-between; width: 90%; height: 350px; border: 1px solid black; padding: 10px;">
+					
+
+					<div class="changeUser-name">
+						<label>Name</label>
+						<input type="text" name="user-name" id="changeUserName">
+					</div>
+
+					<div class="changeUser-email">
+						<label>Email</label>
+						<input type="email" name="user-email" id="changeUserEmail" placeholder="example@gmail.com">
+					</div>
+
+					<div class="changeUser-photo" style="display: flex; flex-flow: row nowrap; align-items: center;">
+						<img id="changeUserImg-photo" src="media/images/user.svg" style="width: 128px; height: 128px;">
+						<input type="file" id="changeUserPhoto">
+						<input type="hidden" id="changeUserPhotoHidden" value="" name="user-photo" >
+					</div>
+
+					<sup style="color: green; font-style: italic;">Photo size must be less than 100kb</sup>
+
+				</form>
+			</div>
+
+			<div id="conteiner-btn" style="display: none">
+				<button id="partiallyСhange" style="margin: 10px;">Сhange part</button>
+				<button id="сompletelyСhange" style="margin: 10px;">Replace</button>
+			</div>	
+			
+	</div>
+
+	<div id="wrap-conteinerRegistration" style=" display: none;">
+		
+		<div class="conteiner-registration" style="position: relative; display: flex; flex-flow: column wrap; justify-content: space-around; align-items: center; width: 450px; height: 430px; border: 1px solid black; margin: 5px; background-color: #fff7d1;">
+
+			<a href="#" id="closeForm" style="width: 10px; height: 10px;"><img src="media/images/cross.png" style="position: absolute; top: 10px; right: 10px; width: 10px; height: 10px;"></a>
+
+			<h1 style="font-size: 24px;">Registration form</h1>
+
+			<form id="form-registration" style="display: flex; flex-flow: column wrap; justify-content: space-between; width: 90%; height: 350px; border: 1px solid black; padding: 10px;">
+				
+				<div class="registration-login">
+					<label>Login <em style="color: red;">*</em></label>
+					<input type="text" id="login">
+				</div>
+
+				<div class="registration-name">
+					<label>Name <em style="color: red;">*</em></label>
+					<input type="text" name="user-name" id="name">
+				</div>
+
+				<div class="registration-email">
+					<label>Email <em style="color: red;">*</em></label>
+					<input type="email" name="user-email" id="email" placeholder="example@gmail.com">
+				</div>
+
+				<div class="registration-photo" style="display: flex; flex-flow: row nowrap; align-items: center;">
+					<img id="img-photo" src="media/images/user.svg" style="width: 128px; height: 128px;">
+					<input type="file" id="photo">
+					<input type="hidden" id="photoHidden" value="" name="user-photo" >
+				</div>
+				<sup style="color: green; font-style: italic;">Photo size must be less than 100kb</sup>
+
+				<div class="registration-password">
+					<label>Password <em style="color: red;">*</em></label>
+					<input type="password" id="password" title="The minimum length is 6 characters, must contain at least 1 uppercase letter and 1 number.">
+					<input type="hidden" name="user-password" id="userPass">
+				</div>
+
+				<div class="registration-password">
+					<label>Repeat password<em style="color: red;">*</em></label>
+					<input type="password" id="passwordRepeat">
+				</div>
+
+				<sup style="color: red; font-style: italic;">* - required field</sup>
+
+			</form>
+
+			<button id="btn-registration">Create you account</button>
+
+		</div>
+
+	</div>
+
+
+	<button id="btn-open-registrationForm" style="position: absolute; top: 10px; right: 10px; float: right; margin: 10px;">Registration</button>
+	
+	<script src="js/main.js"></script>	
+</body>
+</html>
