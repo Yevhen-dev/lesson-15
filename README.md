@@ -1,4 +1,4 @@
-# HW15_Chukharkin_Yevhen
+# Registration Forms
 
 
 [live demo](https://yevhen-dev.github.io/lesson-15/)
